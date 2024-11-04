@@ -1,0 +1,19 @@
+.campaign-page {
+    padding: 20px;
+}
+
+.campaign-navbar {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.campaign-info {
+    margin-top: 20px;
+}
+
+.combat-simulator {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
