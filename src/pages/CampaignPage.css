@@ -1,19 +1,38 @@
-.campaign-page {
-    padding: 20px;
+.info-container {
+    padding: 1rem;
+    background-color: #2b2b2b; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
 }
 
-.campaign-navbar {
-    background-color: #f8f9fa;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+.date-display {
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
-.campaign-info {
-    margin-top: 20px;
+.time-weather-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
-.combat-simulator {
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
+.time-display {
+    text-align: left;
+}
+
+.weather-info {
+    text-align: right;
+}
+
+.additional-info {
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.control-button {
+    margin-right: 0.5rem; /* Espaciado entre botones */
+}
+
+.game-container{
+    min-height: 70vh;
 }

@@ -1,0 +1,70 @@
+/* Estilo general de la tarjeta del reloj */
+.clock-container {
+    background-color: #333; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco para contraste */
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 300px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Sombra sutil para efecto elevado */
+    text-align: center;
+}
+
+
+/* Estilo de fecha */
+.date-container .day {
+    font-size: 1em;
+    color: #cccccc; /* Color gris claro */
+}
+
+/* Estilo para la hora */
+.time-container .time {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+.time-container .time-of-day {
+    font-size: 1em;
+    color: #ffcc00; /* Color ámbar para el periodo del día */
+    display: block;
+    margin-top: 5px;
+}
+
+/* Estilo de los botones */
+.button-container .control-button {
+    background-color: #ffffff;
+    color: #333;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 12px; /* Botones redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+/* Efecto hover en botones */
+.button-container .control-button:hover {
+    background-color: #ffcc00;
+    color: #ffffff;
+}
+
+/* Estilo en móvil */
+@media (max-width: 768px) {
+    .clock-container {
+        max-width: 100%;
+        padding: 15px;
+    }
+    
+    .time-container .time {
+        font-size: 2em;
+    }
+    
+    .button-container .control-button {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+}

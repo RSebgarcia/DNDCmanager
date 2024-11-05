@@ -3,7 +3,7 @@ import { Button, ListGroup, Container, Modal } from 'react-bootstrap';
 import NewCampaignModal from '../components/NewCampaignForm';
 import { useNavigate } from 'react-router-dom';
 import { saveAs } from 'file-saver';
-import DBHandler from '../components/DBHandler'; // Importa DBHandler
+import DBHandler from '../components/DBHandler';
 
 const LandingPage = () => {
     const [showNewCampaignModal, setShowNewCampaignModal] = useState(false);
@@ -13,7 +13,7 @@ const LandingPage = () => {
     const [fileToImport, setFileToImport] = useState(null);
 
     const navigate = useNavigate();
-    const { campaigns, saveCampaignsToLocalStorage, exportCampaigns, importCampaigns } = DBHandler(); // Usa DBHandler
+    const { campaigns, saveCampaignsToLocalStorage, exportCampaigns, importCampaigns } = DBHandler();
 
     const loadCampaign = (campaign) => {
         const loadedCampaign = {
@@ -39,8 +39,11 @@ const LandingPage = () => {
     };
 
     const confirmDeleteCampaign = () => {
-        const updatedCampaigns = campaigns.filter(campaign => campaign !== campaignToDelete);
-        saveCampaignsToLocalStorage(updatedCampaigns);
+        // Asegúrate de que campaignToDelete tenga un ID
+        if (campaignToDelete && campaignToDelete.id) {
+            const updatedCampaigns = campaigns.filter(campaign => campaign.id !== campaignToDelete.id);
+            saveCampaignsToLocalStorage(updatedCampaigns);
+        }
         setShowDeleteModal(false);
         setCampaignToDelete(null);
     };
@@ -99,8 +102,8 @@ const LandingPage = () => {
             </Modal>
             <h2>Campañas Activas</h2>
             <ListGroup>
-                {campaigns.map((campaign, index) => (
-                    <ListGroup.Item key={index}>
+                {campaigns.map((campaign) => (
+                    <ListGroup.Item key={campaign.id}>
                         <h5>{campaign.name}</h5>
                         <p>Jugadores: {campaign.players.join(', ')}</p>
                         <Button variant='primary' onClick={() => loadCampaign(campaign)}>Cargar</Button>

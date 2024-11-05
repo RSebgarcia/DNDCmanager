@@ -1,0 +1,22 @@
+.dice-set {
+    color: #fff;
+}
+
+.dice-set .list-unstyled li {
+    color: #3d3b34;
+}
+
+.dice-set .fw-bold {
+    color: #ffcc00; /* Resalta la última tirada */
+}
+
+.dice-text {
+    background: #d1d1d1 !important;
+    border-radius: 5px;
+    padding: 4px;
+    min-height: 360px;
+}
+
+.dice-set .mb-3 {
+    margin-bottom: 15px !important;
+}

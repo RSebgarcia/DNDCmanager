@@ -1,0 +1,28 @@
+.weather-details {
+    display: flex;
+    flex-direction: column; /* Disposición vertical dentro de los detalles */
+    justify-content: center;
+    background-color: #333; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco para contraste */
+    padding: 1rem;
+    border-radius: 12px;
+    max-width: 300px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Sombra sutil para efecto elevado */
+    text-align: center;
+    margin-right: 1rem;
+}
+
+.season-text{
+    font-size: 1.2em; /* Tamaño de fuente para el título */
+    margin-right: 10px; /* Espacio entre título y contenido */
+}
+.weather-title {
+    font-size: 1.2em; /* Tamaño de fuente para el título */
+    margin-right: 10px; /* Espacio entre título y contenido */
+}
+
+
+.current-temperature {
+    font-size: 2em; /* Tamaño grande para la temperatura */
+    margin: 0; /* Elimina márgenes */
+}
