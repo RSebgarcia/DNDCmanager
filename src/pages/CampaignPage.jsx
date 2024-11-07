@@ -129,7 +129,7 @@ const CampaignPage = () => {
                     ) : (
                         <p>Cargando información de la campaña...</p>
                     )}
-                    <Button variant="light"><Link className='text-dark' to="/">Regresar</Link></Button>
+                    <Button variant="light"><Link className='text-dark' to="/DNDcmanager">Regresar</Link></Button>
                 </Col>
                 {/* Panel Central */}
                 <Col className='me-2 p-4 mt-3 bg-secondary rounded'>

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button, ListGroup, Container, Modal } from 'react-bootstrap';
 import NewCampaignModal from '../components/NewCampaignForm';
 import { useNavigate } from 'react-router-dom';
-import { saveAs } from 'file-saver';
 import DBHandler from '../components/DBHandler';
 
 const LandingPage = () => {
@@ -21,7 +20,7 @@ const LandingPage = () => {
             startDate: new Date(campaign.startDate),
         };
         localStorage.setItem('currentCampaign', JSON.stringify(loadedCampaign));
-        navigate('/campaign');
+        navigate('/DNDcmanager/campaign');
     };
 
     const handleSaveNewCampaign = (newCampaign) => {

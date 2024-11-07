@@ -10,8 +10,8 @@ function App() {
         <DndProvider backend={HTML5Backend}>
         <Router>
             <Routes>
-                <Route path="/" element={<LandingPage />} />
-                <Route path="/campaign" element={<CampaignPage />} />
+                <Route path="/DNDcmanager" element={<LandingPage />} />
+                <Route path="/DNDcmanager/campaign" element={<CampaignPage />} />
             </Routes>
         </Router>
         </DndProvider>
