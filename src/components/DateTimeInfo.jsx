@@ -76,9 +76,17 @@ const DateTimeInfo = ({ startDate, campaignName, campaignId, onSaveTimestamp }) 
         setIsModalOpen(true);
         setIsRunning(false); // Pausar la campaña al abrir el modal
     };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setHoursToSkip(0);
+        setMinutesToSkip(0);
+        setIsRunning(true); // Reanudar la campaña al cerrar el modal
+    };
+
     return (
-        <div className="clock-container d-flex flex-column align-items-center">
-            <div className="clock d-flex flex-column align-items-center w-100">
+        <div className=" d-flex flex-row align-items-center">
+            <div className="clock  clock-container d-flex flex-column align-items-center w-100">
                 <div className="date-container text-center">
                     <span className="day">
                         {`Día ${currentDateTime.getDate()} del mes ${currentDateTime.getMonth() + 1}, año ${currentDateTime.getFullYear()}`}
@@ -93,15 +101,52 @@ const DateTimeInfo = ({ startDate, campaignName, campaignId, onSaveTimestamp }) 
                     </span>
                 </div>
             </div>
-            <div className="button-container d-flex justify-content-around mt-2">
+            <div className="button-container d-flex flex-column justify-content-around ">
                 <button className="control-button" onClick={handleToggleTimer}>
                     {isRunning ? 'Pausar' : 'Reanudar'}
                 </button>
                 <button className="control-button" onClick={handleOpenModal}>Saltar Tiempo</button>
             </div>
+
+            {/* Modal para Saltar Tiempo */}
+            <Modal show={isModalOpen} onHide={handleCloseModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Saltar Tiempo</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="time-skip-input">
+                        <label>Horas:</label>
+                        <input
+                            type="number"
+                            value={hoursToSkip}
+                            onChange={(e) => setHoursToSkip(parseInt(e.target.value) || 0)}
+                            min="0"
+                            className="form-control"
+                        />
+                    </div>
+                    <div className="time-skip-input mt-2">
+                        <label>Minutos:</label>
+                        <input
+                            type="number"
+                            value={minutesToSkip}
+                            onChange={(e) => setMinutesToSkip(parseInt(e.target.value) || 0)}
+                            min="0"
+                            max="59"
+                            className="form-control"
+                        />
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseModal}>
+                        Cancelar
+                    </Button>
+                    <Button variant="primary" onClick={handleTimeSkip}>
+                        Saltar Tiempo
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
-    
-    
-} 
+};
+
 export default DateTimeInfo;

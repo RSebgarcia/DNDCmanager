@@ -7,6 +7,7 @@ import DateTimeInfo from '../components/DateTimeInfo';
 import DBHandler from '../components/DBHandler';
 import DiceSet from '../components/DiceSet';
 import EnemySelector from '../components/EnemySelector'; // Importar el nuevo componente
+import Battleground from '../components/Battleground';
 
 const CampaignPage = () => {
     const [campaign, setCampaign] = useState(null);
@@ -104,6 +105,12 @@ const CampaignPage = () => {
                 {/*Info de campaña, panel izquierdo*/}
                 <Col md={3} className='me-2 mx-2 p-4 mt-3 bg-secondary rounded'>
                     <h1 className='text-center mt-2'>{campaign ? campaign.name : 'Cargando campaña...'}</h1>
+                    <EnemySelector addEnemy={handleAddEnemy} players={campaign ? campaign.players : []} /> {/* Componente para seleccionar enemigos */}
+                    <ul>
+                        {enemies.map((enemy, index) => (
+                            <li key={index}>{enemy.name} (HP: {enemy.hp})</li>
+                        ))}
+                    </ul>
                     {campaign ? (
                         <>
                             <h3>Jugadores:</h3>
@@ -127,12 +134,7 @@ const CampaignPage = () => {
                 {/* Panel Central */}
                 <Col className='me-2 p-4 mt-3 bg-secondary rounded'>
                     <h3>Campo de Batalla</h3>
-                    <EnemySelector addEnemy={handleAddEnemy} /> {/* Componente para seleccionar enemigos */}
-                    <ul>
-                        {enemies.map((enemy, index) => (
-                            <li key={index}>{enemy.name} (HP: {enemy.hp})</li>
-                        ))}
-                    </ul>
+                    <Battleground/>
                 </Col>
                 {/*Dados, panel derecho*/}
                 <Col md={3} className='me-2 p-2 mt-3 bg-secondary rounded'>

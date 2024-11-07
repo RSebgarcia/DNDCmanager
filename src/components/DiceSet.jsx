@@ -1,6 +1,6 @@
 // DiceSet.jsx
 import React, { useState } from 'react';
-import { Button, Dropdown, Form, InputGroup, ListGroup, Container,Row, Col } from 'react-bootstrap';
+import { Button, Dropdown, Form, InputGroup, ListGroup, Container, Row, Col } from 'react-bootstrap';
 import './DiceSet.css';
 
 const diceTypes = [2, 4, 6, 8, 10, 12, 20, 100];
@@ -33,7 +33,7 @@ const DiceSet = () => {
             grandTotal += total;
             return `${count}d${type}: [${rolls.join(', ')}] (${total})`;
         });
-    
+
         const rollResult = `Total: ${grandTotal} | ${results.join(' | ')}`;
         setRollHistory([rollResult, ...rollHistory]);
     };
@@ -42,7 +42,7 @@ const DiceSet = () => {
             <h4 className="text-light">Dice Roller</h4>
             <Row>
                 {/* Dice Sets List */}
-                <Col>
+                <Col md={12}>
                     <ListGroup className="mb-3">
                         {diceSets.map((diceSet, index) => (
                             <ListGroup.Item key={index} className="d-flex align-items-center justify-content-between">
@@ -70,18 +70,20 @@ const DiceSet = () => {
                         ))}
                     </ListGroup>
                 </Col>
-
-                <Button variant="outline-light" onClick={addDiceSet} className="mb-3">
-                    + Añadir dado
-                </Button>
-                <Button variant="outline-light" onClick={removeDiceSet} className="mb-3">
-                    - Remover Dado
-                </Button>
-
-                <Button variant="light" onClick={rollDice}>Lanzar</Button>
-
+                <Container className='d-flex justify-content-center'>
+                    <div className=' mx-1 '>
+                        <Button variant="outline-light" onClick={addDiceSet} className="mb-3">+ Añadir dado</Button>
+                    </div>
+                    <div className=' mx-1 ' >
+                        <Button variant="outline-light" onClick={removeDiceSet} className="mb-3">- Remover Dado</Button>
+                    </div>
+                    <div className=' mx-1 '>
+                        <Button variant="light" onClick={rollDice}>Lanzar</Button>
+                    </div>
+                </Container>
                 {/* Roll History */}
-                <div className="mt-3 dice-text">
+                <div className="mt-3   dice-text">
+
                     <h5 className="text-dark">Historial de tiradas:</h5>
                     <ul className="list-unstyled">
                         {rollHistory.map((roll, index) => (
