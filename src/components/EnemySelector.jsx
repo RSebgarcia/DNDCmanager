@@ -108,7 +108,7 @@ const EnemySelector = ({ players }) => {
                 ref={drag}  // Asignamos el ref de drag para permitir el arrastre
                 style={{ opacity: isDragging ? 0.5 : 1 }}  // Estilo para reducir opacidad mientras se arrastra
             >
-                <span><strong>{enemy.name}</strong> | {enemy.health} | {enemy.type}</span>
+                <span><strong>{enemy.name}</strong> HP: {enemy.health}  CR: {enemy.class}</span>
             </ListGroup.Item>
         );
     };
@@ -136,27 +136,24 @@ const EnemySelector = ({ players }) => {
 
     return (
         <Container fluid >
-            <Row className='text-center mb-2 text-light'>
-                <h1>Enemy Selector</h1>
-            </Row>
 
-            <Row className='d-flex align-items-center mb-4'>
-                <Col md={3}>
+            <Row className='mb-4'>
+                <Col >
                     <Button variant="primary" onClick={() => setShowAddEnemyModal(true)} className="me-2">Crear Enemigo</Button>
                 </Col>
 
 
-                <Col md={3}>
+                <Col >
                     <Button variant="success" onClick={() => setShowAddAllyModal(true)}>Agregar Aliado</Button>
                 </Col>
 
 
-                <Col md={3}>
+                <Col >
                     <Button variant="dark" onClick={exportEnemiesAndAllies} className="me-2">Exportar JSON</Button>
                 </Col>
 
 
-                <Col md={3}>
+                <Col >
                     <Button variant="dark" onClick={handleJsonModal} className="me-2">Importar JSON</Button>
                 </Col>
             </Row>

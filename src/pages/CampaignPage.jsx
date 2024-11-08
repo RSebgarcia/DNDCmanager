@@ -1,4 +1,3 @@
-import './CampaignPage.css';
 import React, { useEffect, useState, useCallback } from 'react';
 import { Button, Container, Row, Col, Stack } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -8,6 +7,8 @@ import DBHandler from '../components/DBHandler';
 import DiceSet from '../components/DiceSet';
 import EnemySelector from '../components/EnemySelector'; // Importar el nuevo componente
 import Battleground from '../components/Battleground';
+import './CampaignPage.css';
+
 
 const CampaignPage = () => {
     const [campaign, setCampaign] = useState(null);
@@ -70,9 +71,9 @@ const CampaignPage = () => {
     };
     
     return (
-        <Container fluid className="ps-5 pe-5 campaign-page vw-100 vh-100 bg-dark">
+        <Container fluid className="ps-5 pe-5 campaign-page ">
             {/*Header*/}
-            <Stack gap={3} className='bg-secondary rounded'>
+            <Stack gap={3} className=' rounded'>
                 <Row className='align-items-center'>
                     <Col>
                         {/* Aquí puedes agregar un logo o título si es necesario */}
@@ -103,8 +104,8 @@ const CampaignPage = () => {
             </Stack>
             <Row className="campaign-info game-container">
                 {/*Info de campaña, panel izquierdo*/}
-                <Col md={4} className='me-2 mx-2 p-4 mt-3 bg-secondary rounded'>
                     <h1 className='text-center mt-2'>{campaign ? campaign.name : 'Cargando campaña...'}</h1>
+                <Col  className='me-2 mx-2 p-4 mt-3  rounded'>
                     <EnemySelector addEnemy={handleAddEnemy} players={campaign ? campaign.players : []} /> {/* Componente para seleccionar enemigos */}
                     <ul>
                         {enemies.map((enemy, index) => (
@@ -132,12 +133,11 @@ const CampaignPage = () => {
                     <Button variant="light"><Link className='text-dark' to="/DNDcmanager">Regresar</Link></Button>
                 </Col>
                 {/* Panel Central */}
-                <Col className='me-2 p-4 mt-3 bg-secondary rounded'>
-                    <h3>Campo de Batalla</h3>
+                <Col  className='me-2 p-4 mt-3 btground rounded'>
                     <Battleground/>
                 </Col>
                 {/*Dados, panel derecho*/}
-                <Col md={2} className='me-2 p-2 mt-3 bg-secondary rounded'>
+                <Col  className='me-2 p-2 mt-3 diceset rounded'>
                     <DiceSet />
                 </Col>
             </Row>

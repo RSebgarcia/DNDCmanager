@@ -1,38 +1,84 @@
+
+/* Contenedor de información principal */
 .info-container {
-    padding: 1rem;
-    background-color: #2b2b2b; /* Fondo oscuro */
-    color: #fff; /* Texto blanco */
+    padding: 1.5rem;
+    background-color: #1b1515; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro para contraste */
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); /* Sombra elegante */
 }
 
+/* Display de la fecha */
 .date-display {
     text-align: center;
-    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #ffffff; /* Texto claro */
 }
 
+/* Contenedor de tiempo y clima */
 .time-weather-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444;
+    margin-bottom: 1.5rem;
 }
 
+/* Estilo para la hora */
 .time-display {
     text-align: left;
+    font-size: 1rem;
+    color: #d3d3d3;
 }
 
+/* Estilo para la información del clima */
 .weather-info {
     text-align: right;
+    font-size: 1rem;
+    color: #d3d3d3;
 }
 
+/* Información adicional */
 .additional-info {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
     text-align: left;
+    color: #b0b0b0; /* Color gris suave */
 }
 
+/* Botones de control */
 .control-button {
     margin-right: 0.5rem; /* Espaciado entre botones */
+    background-color: #565656; /* Fondo del botón */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.game-container{
+.control-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor del juego */
+.game-container {
     min-height: 70vh;
+    padding: 2rem;
+    background-color: #1e1e1e; /* Fondo oscuro */
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Sombra suave */
+}
+.diceset{
+    min-width: 20% !important;
+    max-width: 20% !important;
+}
+.btground{
+    min-width: 50% !important;
+    max-width: 50% !important;
 }

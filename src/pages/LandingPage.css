@@ -1,0 +1,105 @@
+/* Fondo general oscuro */
+body, .landing-page {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Títulos */
+h1, h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+
+button:hover, .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.7); /* Mayor sombra al hacer hover */
+}
+
+/* Estilos específicos para botones de carga y exportación */
+button.btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+button.btn-secondary {
+    background-color: #6c757d;
+    color: #ffffff;
+}
+
+/* Lista de campañas */
+.campaingList {
+
+    max-width: 50%; /* Mantener ancho ajustado al contenido */
+    background: rgba(255, 255, 255, 0); /* Fondo transparente */
+    border-radius: 8px;
+}
+
+/* Estilos para items de lista de campaña */
+.c-info {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: #2a2a2a;
+    border-radius: 12px; /* Mantener borde redondeado */
+    margin: 20px; /* Mantener margen original */
+    color: #e0e0e0;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.c-info h5 {
+    color: #ffffff;
+}
+
+.c-info p {
+    font-size: 0.9rem;
+    color: #bdbdbd;
+}
+
+/* Modal */
+.modal-content {
+    background-color: #2c2c2c;
+    color: #ffffff;
+    border-radius: 8px;
+}
+
+.modal-header,
+.modal-footer {
+    border: none;
+}
+
+.modal-footer .btn-primary {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Efecto hover en modal */
+button.modal-close:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor principal de campañas */
+.camp-master {
+    background-color: #1f1f1f;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Transiciones generales */
+button, .c-info {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto hover de botones y elementos de lista */
+button:hover, .c-info:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Input de archivo oculto */
+input[type="file"] {
+    display: none;
+}

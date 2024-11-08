@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, ListGroup, Container, Modal } from 'react-bootstrap';
+import { Button, ListGroup, Container, Modal,Row,Col } from 'react-bootstrap';
 import NewCampaignModal from '../components/NewCampaignForm';
 import { useNavigate } from 'react-router-dom';
 import DBHandler from '../components/DBHandler';
+import './LandingPage.css'
 
 const LandingPage = () => {
     const [showNewCampaignModal, setShowNewCampaignModal] = useState(false);
@@ -62,12 +63,14 @@ const LandingPage = () => {
 
     return (
         <Container className="landing-page">
+{/*--------------------------------------------------MainBTNS---------------------------------------------*/}
+            <Row className='mb-5'>
             <h1 className="text-center">Gestión de Campañas</h1>
-            <div className="text-center">
+            <Col className="text-center">
                 <Button variant="primary" onClick={() => setShowNewCampaignModal(true)} className="m-2">
                     Nueva Campaña
                 </Button>
-                <Button variant="secondary" className="m-2">
+                <Button variant="light" className="m-2">
                     <label htmlFor="importCampaignsInput" style={{ cursor: 'pointer', margin: 0 }}>
                         Cargar Campaña
                     </label>
@@ -78,11 +81,42 @@ const LandingPage = () => {
                     accept=".json"
                     style={{ display: 'none' }}
                     onChange={handleImportCampaigns}
-                />
-                <Button variant="secondary" onClick={exportCampaigns} className="m-2">
+                    />
+                <Button variant="light" onClick={exportCampaigns} className="m-2">
                     Exportar Campañas
                 </Button>
-            </div>
+            </Col>
+            </Row>
+
+            {/*--------------------------------------------------Active CAMPAIGNS---------------------------------------------*/}
+            <Row className='camp-master rounded'>
+                <h2 className='text-light '>Campañas Activas</h2>
+                <Col >
+                    <ListGroup >
+                        {campaigns.map((campaign) => (
+                            <ListGroup.Item key={campaign.id} className='c-info'>
+                                <Container className='campaingList '>
+                                    <Row >
+                                        <h5>{campaign.name}</h5>
+                                        <p>Jugadores: {campaign.players.join(', ')}</p>
+                                    </Row>
+                                    <Row >
+                                        <Col>
+                                            <Button variant='light' onClick={() => loadCampaign(campaign)}>Cargar</Button>
+                                        </Col>
+                                        <Col>
+                                            <Button variant='light' onClick={() => handleDeleteCampaign(campaign)}>Eliminar</Button>
+                                        </Col>
+                                    </Row>
+                                </Container>
+                            </ListGroup.Item>
+                        ))}
+                    </ListGroup>
+                </Col>
+            </Row>
+
+
+{/*--------------------------------------------------MODALS---------------------------------------------*/}
             <Modal show={showImportConfirmModal} onHide={() => setShowImportConfirmModal(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Confirmar Carga de Campañas</Modal.Title>
@@ -99,17 +133,7 @@ const LandingPage = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <h2>Campañas Activas</h2>
-            <ListGroup>
-                {campaigns.map((campaign) => (
-                    <ListGroup.Item key={campaign.id}>
-                        <h5>{campaign.name}</h5>
-                        <p>Jugadores: {campaign.players.join(', ')}</p>
-                        <Button variant='primary' onClick={() => loadCampaign(campaign)}>Cargar</Button>
-                        <Button variant='danger' onClick={() => handleDeleteCampaign(campaign)}>Eliminar</Button>
-                    </ListGroup.Item>
-                ))}
-            </ListGroup>
+
             <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Confirmar Eliminación</Modal.Title>
