@@ -70,16 +70,18 @@ const DiceSet = () => {
                         ))}
                     </ListGroup>
                 </Col>
-                <Container className='d-flex justify-content-center'>
-                    <div className=' mx-1 '>
-                        <Button variant="outline-light" onClick={addDiceSet} className="mb-3">+ Añadir dado</Button>
-                    </div>
-                    <div className=' mx-1 ' >
-                        <Button variant="outline-light" onClick={removeDiceSet} className="mb-3">- Remover Dado</Button>
-                    </div>
-                    <div className=' mx-1 '>
-                        <Button variant="light" onClick={rollDice}>Lanzar</Button>
-                    </div>
+                <Container >
+                    <Row className='d-flex justify-items-center align-content-center'>
+                        <Col >
+                            <Button variant="success" onClick={addDiceSet} className="mb-3">+</Button>
+                        </Col>
+                        <Col  >
+                            <Button variant="danger" onClick={removeDiceSet} className="mb-3">-</Button>
+                        </Col>
+                        <Col >
+                            <Button variant="light" onClick={rollDice}>Lanzar</Button>
+                        </Col>
+                    </Row>
                 </Container>
                 {/* Roll History */}
                 <div className="mt-3   dice-text">

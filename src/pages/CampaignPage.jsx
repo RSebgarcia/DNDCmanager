@@ -103,7 +103,7 @@ const CampaignPage = () => {
             </Stack>
             <Row className="campaign-info game-container">
                 {/*Info de campaña, panel izquierdo*/}
-                <Col md={3} className='me-2 mx-2 p-4 mt-3 bg-secondary rounded'>
+                <Col md={4} className='me-2 mx-2 p-4 mt-3 bg-secondary rounded'>
                     <h1 className='text-center mt-2'>{campaign ? campaign.name : 'Cargando campaña...'}</h1>
                     <EnemySelector addEnemy={handleAddEnemy} players={campaign ? campaign.players : []} /> {/* Componente para seleccionar enemigos */}
                     <ul>
@@ -137,7 +137,7 @@ const CampaignPage = () => {
                     <Battleground/>
                 </Col>
                 {/*Dados, panel derecho*/}
-                <Col md={3} className='me-2 p-2 mt-3 bg-secondary rounded'>
+                <Col md={2} className='me-2 p-2 mt-3 bg-secondary rounded'>
                     <DiceSet />
                 </Col>
             </Row>
