@@ -106,6 +106,11 @@ const Battleground = () => {
                                 type="number"
                                 value={initiative}
                                 onChange={(e) => setInitiative(e.target.value)}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                      e.preventDefault(); // Evita la redirección
+                                      handleInitiativeSubmit(); // Llama a la función de envío manualmente
+                                    }}}
                             />
                         </Form.Group>
                     </Form>
