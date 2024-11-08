@@ -21,7 +21,7 @@ const LandingPage = () => {
             startDate: new Date(campaign.startDate),
         };
         localStorage.setItem('currentCampaign', JSON.stringify(loadedCampaign));
-        navigate('/DNDCmanager/campaign');
+        navigate('/GMToolBelt/campaign');
     };
 
     const handleSaveNewCampaign = (newCampaign) => {
