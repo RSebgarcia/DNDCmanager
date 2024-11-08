@@ -5,7 +5,7 @@ import CampaignPage from './pages/CampaignPage.jsx';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Container } from 'react-bootstrap';
-import './app.css'
+import './App.css'
 
 function App() {
     return (
@@ -13,8 +13,8 @@ function App() {
             <DndProvider backend={HTML5Backend}>
                 <Router >
                     <Routes>
-                        <Route path="/DNDcmanager" element={<LandingPage />} />
-                        <Route path="/DNDcmanager/campaign" element={<CampaignPage />} />
+                        <Route path="/DNDCmanager/" element={<LandingPage />} />
+                        <Route path="/DNDCmanager/campaign" element={<CampaignPage />} />
                     </Routes>
                 </Router>
             </DndProvider>
