@@ -114,16 +114,7 @@ const CampaignPage = () => {
                     </ul>
                     {campaign ? (
                         <>
-                            <h3>Jugadores:</h3>
-                            {Array.isArray(campaign.players) && campaign.players.length > 0 ? (
-                                <ul>
-                                    {campaign.players.map((player, index) => (
-                                        <li key={index}>{player}</li>
-                                    ))}
-                                </ul>
-                            ) : (
-                                <p>No hay jugadores en esta campaña.</p>
-                            )}
+                            <textarea className='notepad'>Notas del GM</textarea>
                             <p>Fecha y Hora de Inicio: {new Date(campaign.startDate).toLocaleString()}</p>
                             <p>Lugar: {campaign.location}</p>
                         </>

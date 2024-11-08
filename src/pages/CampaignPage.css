@@ -82,3 +82,9 @@
     min-width: 50% !important;
     max-width: 50% !important;
 }
+
+.notepad{
+    width: 100%;
+    min-width: 80%;
+    height: 30%;
+}

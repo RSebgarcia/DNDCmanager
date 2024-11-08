@@ -13,55 +13,64 @@ const EnemySelector = ({ players }) => {
     const [showJsonModal, setShowJsonModal] = useState(false);
     
     // Cargar datos de localStorage al iniciar el componente solo una vez
+
+    // Obtener currentCampaign desde localStorage una vez
+    const currentCampaign = JSON.parse(localStorage.getItem('currentCampaign'));
+    const campaignId = currentCampaign?.id;
+
+    // Generar una clave única para aliados y enemigos basada en campaignId
+    const alliesKey = `allies_${campaignId}`;
+    const enemiesKey = `enemies_${campaignId}`;
+
+    // Cargar datos de localStorage al iniciar el componente solo una vez
     useEffect(() => {
-        const storedEnemies = JSON.parse(localStorage.getItem('enemies')) || [];
-        const storedAllies = JSON.parse(localStorage.getItem('allies')) || [];
-        const currentCampaign = JSON.parse(localStorage.getItem('currentCampaign'));
-    
+        const storedEnemies = JSON.parse(localStorage.getItem(enemiesKey)) || [];
+        const storedAllies = JSON.parse(localStorage.getItem(alliesKey)) || [];
+
         // Si la lista de aliados en `localStorage` está vacía, añadimos los personajes predeterminados
         if (storedAllies.length === 0 && currentCampaign && currentCampaign.players) {
-            const defaultAllies = currentCampaign.players.map((playerName) => ({ name: playerName }));
+            const defaultAllies = currentCampaign.players.map((playerName) => ({ name: playerName, health: '1d1' })); // Asignar 1 de vida por defecto
             setAllies(defaultAllies);
-            localStorage.setItem('allies', JSON.stringify(defaultAllies));
+            localStorage.setItem(alliesKey, JSON.stringify(defaultAllies));  // Guardar aliados únicos por campaña
         } else {
             setAllies(storedAllies);
         }
-    
+
         setEnemies(storedEnemies);
-    }, []);
-    // Guardar enemigos y aliados en localStorage cada vez que cambian, si tienen datos
+    }, [campaignId]);  // Re-ejecutar si campaignId cambia
+
+    // Guardar enemigos y aliados en localStorage cada vez que cambian
     useEffect(() => {
         if (enemies.length > 0) {
-            localStorage.setItem('enemies', JSON.stringify(enemies));
+            localStorage.setItem(enemiesKey, JSON.stringify(enemies));
         }
-    }, [enemies]);
+    }, [enemies, enemiesKey]);
 
     useEffect(() => {
         if (allies.length > 0) {
-            localStorage.setItem('allies', JSON.stringify(allies));
+            localStorage.setItem(alliesKey, JSON.stringify(allies));
         }
-    }, [allies]);
-
+    }, [allies, alliesKey]);
 
     // Función para agregar un enemigo y cerrar el modal
     const handleAddEnemy = (newEnemy) => {
         setEnemies((prev) => [...prev, newEnemy]);
         setShowAddEnemyModal(false);
     };
-    
-  // Función para agregar un aliado
-  const handleAddAlly = () => {
-    const allyName = selectedPlayer || newAlly.name;
-    if (allyName) {
-        const newAllyWithHealth = { name: allyName, health: '1d1' };  // Asignar 1 de vida por defecto
-        setAllies((prev) => [...prev, newAllyWithHealth]);
-        setShowAddAllyModal(false);
-        setNewAlly({ name: '' });
-        setSelectedPlayer('');
-    } else {
-        alert("Por favor, selecciona un jugador o completa el nombre del aliado.");
-    }
-};
+
+    // Función para agregar un aliado
+    const handleAddAlly = () => {
+        const allyName = selectedPlayer || newAlly.name;
+        if (allyName) {
+            const newAllyWithHealth = { name: allyName, health: '1d1' };  // Asignar 1 de vida por defecto
+            setAllies((prev) => [...prev, newAllyWithHealth]);
+            setShowAddAllyModal(false);
+            setNewAlly({ name: '' });
+            setSelectedPlayer('');
+        } else {
+            alert("Por favor, selecciona un jugador o completa el nombre del aliado.");
+        }
+    };
 
     // Función para exportar enemigos y aliados a un archivo JSON
     const exportEnemiesAndAllies = () => {
@@ -137,24 +146,21 @@ const EnemySelector = ({ players }) => {
     return (
         <Container fluid >
 
-            <Row className='mb-4'>
+            <Row className='mb-4 align-items-center'>
                 <Col >
-                    <Button variant="primary" onClick={() => setShowAddEnemyModal(true)} className="me-2">Crear Enemigo</Button>
+                    <Button variant="primary" onClick={() => setShowAddEnemyModal(true)}>Crear Enemigo</Button>
                 </Col>
 
 
                 <Col >
-                    <Button variant="success" onClick={() => setShowAddAllyModal(true)}>Agregar Aliado</Button>
+                    <Button variant="success" onClick={() => setShowAddAllyModal(true)}>Crear Aliado</Button>
                 </Col>
 
 
                 <Col >
-                    <Button variant="dark" onClick={exportEnemiesAndAllies} className="me-2">Exportar JSON</Button>
-                </Col>
+                    <Button variant="dark" onClick={exportEnemiesAndAllies} >Exportar</Button>
 
-
-                <Col >
-                    <Button variant="dark" onClick={handleJsonModal} className="me-2">Importar JSON</Button>
+                    <Button variant="dark" onClick={handleJsonModal} >Importar</Button>
                 </Col>
             </Row>
             <Row>
@@ -210,6 +216,7 @@ const EnemySelector = ({ players }) => {
                     <Button variant="success" onClick={importEnemiesAndAllies}>Importar</Button>
                 </Modal.Footer>
             </Modal>
+
             <Modal show={showAddAllyModal} onHide={() => setShowAddAllyModal(false)}>
                 <Modal.Header closeButton><Modal.Title>Agregar Aliado</Modal.Title></Modal.Header>
                 <Modal.Body>

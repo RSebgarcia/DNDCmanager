@@ -84,7 +84,7 @@ const Battleground = () => {
         <Container ref={drop} className={`rounded whiteboard ${isOver ? 'highlight' : ''}`}>
             <Row className="g-3">
                 {characters.sort((a, b) => b.initiative - a.initiative).map((character, index) => (
-                    <Col key={character.id} md={4}>
+                    <Col key={character.id} md={3}>
                         <CharacterCard
                             character={character}
                             onDamage={(damage) => handleDamage(character.id, damage)}

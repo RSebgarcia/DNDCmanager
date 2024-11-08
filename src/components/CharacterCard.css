@@ -28,12 +28,12 @@
 }
 
 .character-card .attack-list li {
-    padding: 2px 0; /* Espaciado entre ataques */
+    padding: 1px 0; /* Espaciado entre ataques */
     font-size: 0.9rem;
 }
 
 .character-card .btn {
-    margin-top: 10px;
+    margin-top: px;
     background-color: #dc3545;
     border: none;
 }
