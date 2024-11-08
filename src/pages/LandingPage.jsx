@@ -20,7 +20,7 @@ const LandingPage = () => {
             startDate: new Date(campaign.startDate),
         };
         localStorage.setItem('currentCampaign', JSON.stringify(loadedCampaign));
-        navigate('/DNDcmanager/campaign');
+        navigate('/DNDCmanager/campaign');
     };
 
     const handleSaveNewCampaign = (newCampaign) => {
