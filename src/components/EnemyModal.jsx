@@ -75,7 +75,7 @@ const EnemyModal = ({ show, onHide, onAdd }) => {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Clase de Armadura (AC)</Form.Label>
+                        <Form.Label>AC</Form.Label>
                         <Form.Control
                             type="number"
                             value={enemy.AC}

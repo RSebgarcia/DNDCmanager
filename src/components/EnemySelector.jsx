@@ -115,7 +115,7 @@ const EnemySelector = ({ players }) => {
         return (
             <ListGroup.Item
                 ref={drag}  // Asignamos el ref de drag para permitir el arrastre
-                style={{ opacity: isDragging ? 0.5 : 1 }}  // Estilo para reducir opacidad mientras se arrastra
+                style={{ opacity: isDragging ? 0.5 : 1 }}
             >
                 <span><strong>{enemy.name}</strong> HP: {enemy.health}  CR: {enemy.class}</span>
             </ListGroup.Item>

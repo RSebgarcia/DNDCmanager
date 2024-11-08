@@ -34,7 +34,7 @@ const CharacterCard = ({ character, onDamage, onDelete }) => {
                     <Card.Text>
                         {character.currentHealth !== undefined && (
                             <div>
-                                <strong>Salud Actual:</strong> {character.currentHealth}
+                                <strong>HP:</strong> {character.currentHealth}
                             </div>
                         )}
                         {character.AC && (
